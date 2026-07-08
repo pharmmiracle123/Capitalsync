@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CapitalSync</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f7fbff;
+overflow-x:hidden;
+color:#111827;
+}
+
+/* Background Blur */
+
+.bg-circle{
+position:absolute;
+width:420px;
+height:420px;
+border-radius:50%;
+filter:blur(90px);
+opacity:.35;
+z-index:-1;
+}
+
+.bg1{
+background:#3b82f6;
+top:-120px;
+left:-120px;
+}
+
+.bg2{
+background:#22d3ee;
+right:-150px;
+top:250px;
+}
+
+.bg3{
+background:#34d399;
+bottom:-180px;
+left:40%;
+}
+
+/* Navigation */
+
+.nav-shadow{
+box-shadow:0 10px 40px rgba(0,0,0,.06);
+backdrop-filter:blur(18px);
+}
+
+/* Glass */
+
+.glass{
+background:rgba(255,255,255,.72);
+backdrop-filter:blur(22px);
+border:1px solid rgba(255,255,255,.8);
+}
+
+/* Gradient */
+
+.gradient-text{
+background:linear-gradient(90deg,#3b82f6,#34d399);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.gradient-btn{
+background:linear-gradient(90deg,#3b82f6,#38bdf8,#34d399);
+background-size:200%;
+transition:3.5s;
+}
+
+.gradient-btn:hover{
+background-position:right;
+transform:translateY(-3px);
+box-shadow:0 18px 40px rgba(59,130,246,.35);
+}
+
+/* Menu */
+
+.menu-btn{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.sidebar a {
+  padding: 12px 25px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: #0F178B;
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 35px;
+  cursor: pointer;
+}
+/* Forex ticker */
+
+.ticker{
+overflow:hidden;
+white-space:nowrap;
+background:white;
+border-top:1px solid #edf2f7;
+border-bottom:1px solid #edf2f7;
+}
+
+.ticker-content{
+display:inline-block;
+padding-left:100%;
+animation:ticker 28s linear infinite;
+}
+
+@keyframes ticker{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-100%);
+}
+
+}
+
+/* Floating Animation */
+
+.float{
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+</style>
+
+</head>
+
+<body class="relative">
+
+<div class="bg-circle bg1"></div>
+<div class="bg-circle bg2"></div>
+<div class="bg-circle bg3"></div>
+
+<!-- ================= NAVBAR ================= -->
+
+<header style="
+  display:flex; 
+  align-items:center; 
+  gap:10px; 
+  padding:10px 20px;
+">
+
+  <!-- Facebook Icon Before Text -->
+  <img src="FB_IMG_17580202436038222.jpg" 
+       alt="CapitalSync"
+       style="
+         width:40px; 
+         height:40px; 
+         border:2px solid #0F178B; 
+         border-radius:10px; 
+         object-fit:cover;
+       ">
+
+  <div>
+    
+    <h2 class="font-extrabold text-2xl">
+      
+      CapitalSync
+      
+      <span class="text-blue-500">FX</span>
+      
+    </h2>
+    
+  </div>
+  
+</a>
+
+<!-- Menu -->
+  <button id="menuBtn"
+style="margin-left:auto;font-size:28px;cursor:pointer;">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+</header>
+
+</div>
+
+</div>
+
+<!-- Live Ticker -->
+
+<div class="ticker py-3">
+
+<div class="ticker-content text-sm font-medium text-gray-700">
+
+EUR/USD
+<strong class="mx-1">1.08542</strong>
+
+<span class="text-green-500">+0.02%</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+GBP/USD
+<strong class="mx-1">1.27431</strong>
+
+<span class="text-red-500">-0.12%</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+USD/JPY
+<strong class="mx-1">154.36</strong>
+
+<span class="text-green-500">+0.08%</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+BTC/USD
+<strong class="mx-1">$108,210</strong>
+
+<span class="text-green-500">+2.12%</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+GOLD
+<strong class="mx-1">$3,341</strong>
+
+<span class="text-red-500">-0.41%</span>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="pt-40 pb-24">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="max-w-3xl mx-auto text-center">
+
+<!-- Market Badge -->
+
+<div class="inline-flex items-center gap-3 glass rounded-full px-6 py-3 shadow-lg mb-10">
+
+<span class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></span>
+
+<span class="font-medium text-gray-700">
+
+Markets are open — Start trading now
+
+</span>
+
+</div>
+
+<!-- Heading -->
+
+<h1 class="text-5xl md:text-7xl font-black leading-tight">
+
+Trade
+
+<span class="gradient-text">
+
+Smarter.
+
+</span>
+
+<br>
+
+Trade Secure.
+
+</h1>
+
+<!-- Paragraph -->
+
+<p class="mt-8 text-xl text-gray-500 leading-9 max-w-2xl mx-auto">
+
+Institutional-grade trading made simple.
+Access global markets with lightning-fast execution,
+advanced tools and competitive spreads.
+
+</p>
+
+<!-- Buttons -->
+
+<div class="mt-12 flex flex-col gap-5">
+
+<a href="#"
+
+class="gradient-btn text-white font-bold py-5 rounded-2xl text-xl shadow-xl">
+
+Get Started
+
+<i class="fa-solid fa-arrow-right ml-3"></i>
+
+</a>
+
+<a href="#"
+
+class="bg-white border border-gray-200 text-gray-900 font-bold py-5 rounded-2xl text-xl shadow hover:shadow-xl transition">
+
+Explore Markets
+
+</a>
+
+</div>
+<!-- ================= STATS ================= -->
+
+<div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+<div>
+
+<div class="text-blue-600 text-2xl mb-2">
+<i class="fa-solid fa-chart-line"></i>
+</div>
+
+<h3 class="text-4xl font-extrabold">100+</h3>
+
+<p class="text-gray-500 mt-2">
+Global Markets
+</p>
+
+</div>
+
+<div>
+
+<div class="text-blue-600 text-2xl mb-2">
+<i class="fa-regular fa-clock"></i>
+</div>
+
+<h3 class="text-4xl font-extrabold">0.0ms</h3>
+
+<p class="text-gray-500 mt-2">
+Execution Speed
+</p>
+
+</div>
+
+<div>
+
+<div class="text-blue-600 text-2xl mb-2">
+<i class="fa-solid fa-headset"></i>
+</div>
+
+<h3 class="text-4xl font-extrabold">24/7</h3>
+
+<p class="text-gray-500 mt-2">
+Expert Support
+</p>
+
+</div>
+
+<div>
+
+<div class="text-blue-600 text-2xl mb-2">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+
+<h3 class="text-4xl font-extrabold">99.9%</h3>
+
+<p class="text-gray-500 mt-2">
+Platform Uptime
+</p>
+
+</div>
+
+</div>
+
+<!-- Traders -->
+
+<div class="mt-16 flex flex-col items-center">
+
+<div class="flex -space-x-4">
+
+<img src="https://i.pravatar.cc/100?img=12"
+class="w-16 h-16 rounded-full border-4 border-white shadow-lg">
+
+<img src="https://i.pravatar.cc/100?img=18"
+class="w-16 h-16 rounded-full border-4 border-white shadow-lg">
+
+<img src="https://i.pravatar.cc/100?img=24"
+class="w-16 h-16 rounded-full border-4 border-white shadow-lg">
+
+<img src="https://i.pravatar.cc/100?img=33"
+class="w-16 h-16 rounded-full border-4 border-white shadow-lg">
+
+<img src="https://i.pravatar.cc/100?img=47"
+class="w-16 h-16 rounded-full border-4 border-white shadow-lg">
+
+</div>
+
+<h3 class="text-4xl font-black mt-6">
+
+50,000+
+
+</h3>
+
+<p class="text-gray-500 text-lg">
+
+Traders worldwide
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Mobile Menu -->
+
+<div id="mobileMenu"
+
+class="fixed top-0 right-[-100%] w-80 h-screen bg-white shadow-2xl transition-all duration-500 z-[999]">
+
+<div class="p-8">
+
+<div class="flex justify-between items-center">
+
+<h2 class="font-black text-2xl">
+
+CapitalSync
+
+<span class="text-blue-500">FX</span>
+
+</h2>
+
+<button id="closeMenu">
+
+<i class="fa-solid fa-xmark text-3xl"></i>
+
+</button>
+
+</div>
+
+<nav class="mt-12 space-y-6">
+
+<a href="#" class="block text-lg font-semibold hover:text-blue-600">Home</a>
+
+<a href="#" class="block text-lg font-semibold hover:text-blue-600">Markets</a>
+
+<a href="#" class="block text-lg font-semibold hover:text-blue-600">Trading</a>
+
+<a href="#" class="block text-lg font-semibold hover:text-blue-600">Platforms</a>
+
+<a href="#" class="block text-lg font-semibold hover:text-blue-600">Education</a>
+
+<a href="#" class="block text-lg font-semibold hover:text-blue-600">Contact</a>
+
+</nav>
+
+</div>
+
+</div>
+
+<div class="tradingview-widget-container">
+  <div id="tradingview_chart"></div>
+
+  <script src="https://s3.tradingview.com/tv.js"></script>
+
+  <script>
+  new TradingView.widget({
+      "container_id":"tradingview_chart",
+      "width":"100%",
+      "height":500,
+      "symbol":"FX:EURUSD",
+      "interval":"D",
+      "theme":"light",
+      "style":"1",
+      "toolbar_bg":"#ffffff",
+      "hide_top_toolbar":true,
+      "allow_symbol_change":true
+  });
+  </script>
+  
+</div>
+
+<!-- ================= MARKETS SECTION ================= -->
+
+<section class="py-24 bg-white">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="text-center mb-16">
+
+<p class="uppercase tracking-[6px] text-blue-600 font-bold mb-5">
+Markets
+</p>
+
+<h2 class="text-5xl md:text-6xl font-black leading-tight">
+
+Global Markets
+
+<span class="gradient-text">
+
+At Your Fingertips
+
+</span>
+
+</h2>
+
+<p class="mt-8 text-xl text-gray-500 max-w-3xl mx-auto">
+
+Access a wide range of instruments across global markets with competitive conditions.
+
+</p>
+
+</div>
+
+<!-- CARD 1 -->
+
+<div class="group bg-white rounded-[35px] overflow-hidden shadow-xl border border-gray-100 hover:-translate-y-2 hover:shadow-2xl transition duration-500 mb-10">
+
+<div class="relative">
+
+<img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600"
+
+class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
+
+<div class="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent"></div>
+
+<div class="absolute top-7 left-7 w-16 h-16 rounded-2xl bg-blue-600/20 backdrop-blur-xl flex items-center justify-center">
+
+<i class="fa-solid fa-arrow-trend-up text-blue-600 text-2xl"></i>
+
+</div>
+
+</div>
+
+<div class="p-10">
+
+<h3 class="text-4xl font-black mb-5">
+
+Stocks & ETFs
+
+</h3>
+
+<p class="text-gray-500 text-xl leading-9">
+
+Trade global stocks and ETFs with institutional execution, deep liquidity and advanced trading tools.
+
+</p>
+
+<hr class="my-8">
+
+<div class="flex items-center justify-between">
+
+<div>
+
+<h4 class="text-5xl font-black">
+
+2,500+
+
+</h4>
+
+<p class="text-gray-500 text-xl">
+
+Global Instruments
+
+</p>
+
+</div>
+
+<button class="w-16 h-16 rounded-full bg-blue-50 hover:bg-blue-600 hover:text-white transition">
+
+<i class="fa-solid fa-arrow-right text-2xl"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="group bg-white rounded-[35px] overflow-hidden shadow-xl border border-gray-100 hover:-translate-y-2 hover:shadow-2xl transition duration-500 mb-10">
+
+<div class="relative">
+
+<img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=1600"
+
+class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
+
+<div class="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent"></div>
+
+<div class="absolute top-7 left-7 w-16 h-16 rounded-2xl bg-indigo-600/20 backdrop-blur-xl flex items-center justify-center">
+
+<i class="fa-brands fa-bitcoin text-indigo-600 text-3xl"></i>
+
+</div>
+
+</div>
+
+<div class="p-10">
+
+<h3 class="text-4xl font-black mb-5">
+
+Cryptocurrencies
+
+</h3>
+
+<p class="text-gray-500 text-xl leading-9">
+
+Access the world's leading crypto assets with competitive spreads and lightning-fast execution.
+
+</p>
+
+<hr class="my-8">
+
+<div class="flex items-center justify-between">
+
+<div>
+
+<h4 class="text-5xl font-black">
+
+50+
+
+</h4>
+
+<p class="text-gray-500 text-xl">
+
+Crypto Pairs
+
+</p>
+
+</div>
+
+<button class="w-16 h-16 rounded-full bg-blue-50 hover:bg-blue-600 hover:text-white transition">
+
+<i class="fa-solid fa-arrow-right text-2xl"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="group bg-white rounded-[35px] overflow-hidden shadow-xl border border-gray-100 hover:-translate-y-2 hover:shadow-2xl transition duration-500">
+
+<div class="relative">
+
+<img src="https://images.unsplash.com/photo-1642104704074-907c0698cbd9?w=1600"
+
+class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
+
+<div class="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent"></div>
+
+<div class="absolute top-7 left-7 w-16 h-16 rounded-2xl bg-cyan-600/20 backdrop-blur-xl flex items-center justify-center">
+
+<i class="fa-solid fa-chart-column text-cyan-600 text-2xl"></i>
+
+</div>
+
+</div>
+
+<div class="p-10">
+
+<h3 class="text-4xl font-black mb-5">
+
+CFD Trading
+
+</h3>
+
+<p class="text-gray-500 text-xl leading-9">
+
+Trade CFDs across indices, commodities and currencies with flexible leverage and institutional pricing.
+
+</p>
+
+<hr class="my-8">
+
+<div class="flex items-center justify-between">
+
+<div>
+
+<h4 class="text-5xl font-black">
+
+0.0
+
+</h4>
+
+<p class="text-gray-500 text-xl">
+
+Pips Spread From
+
+</p>
+
+</div>
+
+<button class="w-16 h-16 rounded-full bg-blue-50 hover:bg-blue-600 hover:text-white transition">
+
+<i class="fa-solid fa-arrow-right text-2xl"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COIN SLIDER -->
+
+<div class="mt-20 overflow-hidden">
+
+<div class="flex gap-5 whitespace-nowrap animate-[ticker_25s_linear_infinite]">
+
+<div class="bg-white rounded-full shadow-lg px-8 py-5 flex items-center gap-4 min-w-max">
+
+<span class="text-orange-500 text-3xl">
+₿
+</span>
+
+Bitcoin
+
+</div>
+
+<div class="bg-white rounded-full shadow-lg px-8 py-5 flex items-center gap-4 min-w-max">
+
+<span class="text-gray-700 text-3xl">
+Ξ
+</span>
+
+Ethereum
+
+</div>
+
+<div class="bg-white rounded-full shadow-lg px-8 py-5 flex items-center gap-4 min-w-max">
+
+<span class="text-green-500 text-3xl">
+₮
+</span>
+
+USDT
+
+</div>
+
+<div class="bg-white rounded-full shadow-lg px-8 py-5 flex items-center gap-4 min-w-max">
+
+<span class="text-sky-500 text-3xl">
+✕
+</span>
+
+XRP
+
+</div>
+
+<div class="bg-white rounded-full shadow-lg px-8 py-5 flex items-center gap-4 min-w-max">
+
+<span class="text-purple-500 text-3xl">
+◎
+</span>
+
+Solana
+
+</div>
+
+<div class="bg-white rounded-full shadow-lg px-8 py-5 flex items-center gap-4 min-w-max">
+
+<span class="text-blue-500 text-3xl">
+Ł
+</span>
+
+Litecoin
+
+</div>
+
+<div class="bg-white rounded-full shadow-lg px-8 py-5 flex items-center gap-4 min-w-max">
+
+<span class="text-red-500 text-3xl">
+Ð
+</span>
+
+Dogecoin
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="py-24 bg-gradient-to-b from-white to-slate-50">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="text-center mb-20">
+
+<p class="uppercase tracking-[6px] text-blue-600 font-bold mb-5">
+
+Why Choose Us
+
+</p>
+
+<h2 class="text-5xl md:text-6xl font-black leading-tight">
+
+Why
+
+<span class="gradient-text">
+
+Moneta-FX
+
+</span>
+
+Trade
+
+</h2>
+
+<p class="mt-8 text-xl text-gray-500 max-w-3xl mx-auto">
+
+Everything you need for a professional trading experience.
+
+</p>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-8">
+
+<!-- CARD -->
+
+<div class="group bg-white rounded-[35px] p-12 border border-gray-100 shadow-lg hover:-translate-y-3 hover:shadow-2xl transition duration-500 text-center">
+
+<div class="w-28 h-28 rounded-3xl bg-blue-50 mx-auto flex items-center justify-center mb-10 group-hover:bg-blue-600 transition">
+
+<i class="fa-solid fa-globe text-blue-600 text-5xl group-hover:text-white transition"></i>
+
+</div>
+
+<h3 class="text-4xl font-black mb-6">
+
+Access To Us
+
+</h3>
+
+<p class="text-gray-500 text-xl leading-10">
+
+Trade anywhere, anytime using powerful tools designed for beginners and professionals.
+
+</p>
+
+</div>
+
+<!-- CARD -->
+
+<div class="group bg-white rounded-[35px] p-12 border border-gray-100 shadow-lg hover:-translate-y-3 hover:shadow-2xl transition duration-500 text-center">
+
+<div class="w-28 h-28 rounded-3xl bg-blue-50 mx-auto flex items-center justify-center mb-10 group-hover:bg-blue-600 transition">
+
+<i class="fa-solid fa-book-open text-blue-600 text-5xl group-hover:text-white transition"></i>
+
+</div>
+
+<h3 class="text-4xl font-black mb-6">
+
+Learn As You Grow
+
+</h3>
+
+<p class="text-gray-500 text-xl leading-10">
+
+Educational resources, webinars and market insights to improve your trading journey.
+
+</p>
+
+</div>
+
+<!-- CARD -->
+
+<div class="group bg-white rounded-[35px] p-12 border border-gray-100 shadow-lg hover:-translate-y-3 hover:shadow-2xl transition duration-500 text-center">
+
+<div class="w-28 h-28 rounded-3xl bg-blue-50 mx-auto flex items-center justify-center mb-10 group-hover:bg-blue-600 transition">
+
+<i class="fa-solid fa-sliders text-blue-600 text-5xl group-hover:text-white transition"></i>
+
+</div>
+
+<h3 class="text-4xl font-black mb-6">
+
+Trade Flexibility
+
+</h3>
+
+<p class="text-gray-500 text-xl leading-10">
+
+Multiple account types, flexible lot sizes and customizable trading strategies.
+
+</p>
+
+</div>
+
+<!-- CARD -->
+
+<div class="group bg-white rounded-[35px] p-12 border border-gray-100 shadow-lg hover:-translate-y-3 hover:shadow-2xl transition duration-500 text-center">
+
+<div class="w-28 h-28 rounded-3xl bg-blue-50 mx-auto flex items-center justify-center mb-10 group-hover:bg-blue-600 transition">
+
+<i class="fa-solid fa-bolt text-blue-600 text-5xl group-hover:text-white transition"></i>
+
+</div>
+
+<h3 class="text-4xl font-black mb-6">
+
+Real-time Markets
+
+</h3>
+
+<p class="text-gray-500 text-xl leading-10">
+
+Institutional-grade liquidity with real-time pricing and lightning-fast execution.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+
+<section class="py-24">
+
+<div class="max-w-7xl mx-auto px-6">
+
+<div class="text-center mb-20">
+
+<p class="uppercase tracking-[6px] text-blue-600 font-bold mb-5">
+
+Testimonials
+
+</p>
+
+<h2 class="text-5xl md:text-6xl font-black">
+
+Trusted By
+
+<span class="gradient-text">
+
+Traders
+
+</span>
+
+</h2>
+
+<p class="mt-8 text-xl text-gray-500 max-w-3xl mx-auto">
+
+See what our global trading community has to say.
+
+</p>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-8">
+
+<!-- REVIEW -->
+
+<div class="bg-white rounded-[35px] p-10 shadow-xl border border-gray-100">
+
+<div class="text-blue-500 text-2xl mb-6">
+
+★★★★★
+
+</div>
+
+<p class="text-gray-600 text-xl leading-9">
+
+"The execution speed is incredible. I switched from my previous broker and have never looked back."
+
+</p>
+
+<div class="flex items-center gap-5 mt-10">
+
+<img src="https://i.pravatar.cc/100?img=12"
+
+class="w-16 h-16 rounded-full">
+
+<div>
+
+<h4 class="font-bold text-2xl">
+
+James Chen
+
+</h4>
+
+<p class="text-gray-500">
+
+Forex Trader
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- REVIEW -->
+
+<div class="bg-white rounded-[35px] p-10 shadow-xl border border-gray-100">
+
+<div class="text-blue-500 text-2xl mb-6">
+
+★★★★★
+
+</div>
+
+<p class="text-gray-600 text-xl leading-9">
+
+"Sub-millisecond execution has made a huge difference to my scalping strategy."
+
+</p>
+
+<div class="flex items-center gap-5 mt-10">
+
+<img src="https://i.pravatar.cc/100?img=33"
+
+class="w-16 h-16 rounded-full">
+
+<div>
+
+<h4 class="font-bold text-2xl">
+
+Robert Yang
+
+</h4>
+
+<p class="text-gray-500">
+
+Professional Scalper
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- REVIEW -->
+
+<div class="bg-white rounded-[35px] p-10 shadow-xl border border-gray-100">
+
+<div class="text-blue-500 text-2xl mb-6">
+
+★★★★★
+
+</div>
+
+<p class="text-gray-600 text-xl leading-9">
+
+"The educational resources transformed my trading. I finally became consistently profitable."
+
+</p>
+
+<div class="flex items-center gap-5 mt-10">
+
+<img src="https://i.pravatar.cc/100?img=22"
+
+class="w-16 h-16 rounded-full">
+
+<div>
+
+<h4 class="font-bold text-2xl">
+
+Sarah Miller
+
+</h4>
+
+<p class="text-gray-500">
+
+Swing Trader
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- REVIEW -->
+
+<div class="bg-white rounded-[35px] p-10 shadow-xl border border-gray-100">
+
+<div class="text-blue-500 text-2xl mb-6">
+
+★★★★★
+
+</div>
+
+<p class="text-gray-600 text-xl leading-9">
+
+"Excellent support, tight spreads and a beautiful platform. Highly recommended."
+
+</p>
+
+<div class="flex items-center gap-5 mt-10">
+
+<img src="https://i.pravatar.cc/100?img=47"
+
+class="w-16 h-16 rounded-full">
+
+<div>
+
+<h4 class="font-bold text-2xl">
+
+Emily Roberts
+
+</h4>
+
+<p class="text-gray-500">
+
+Investor
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section class="bg-white border-t border-gray-100">
+  
+  <div class="max-w-7xl mx-auto px-6 py-20">
+    
+    <!-- Top -->
+    
+    <div class="grid md:grid-cols-3 gap-12 mb-16">
+      
+      <div>
+        
+        <div class="flex items-center gap-4 mb-8">
+          
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-400 flex items-center justify-center text-white">
+            
+            <i class="fa-solid fa-chart-line text-2xl"></i>
+            
+          </div>
+          
+          <div>
+            
+            <h2 class="text-3xl font-black">
+              
+              CapitalSync
+              
+              <span class="text-blue-500">
+              
+                FX
+                
+              </span>
+              
+            </h2>
+            
+          </div>
+          
+        </div>
+        
+        <p class="text-gray-500 text-lg leading-9">
+          
+          Institutional-grade trading with flexible account types, deep liquidity and lightning-fast execution.
+          
+        </p>
+        
+        <div class="mt-8 space-y-4">
+          
+          <div class="flex items-center gap-4">
+            
+            <i class="fa-regular fa-envelope text-gray-500"></i>
+            
+            <span>support@capitalsync</span>
+            
+          </div>
+          
+          <div class="flex items-center gap-4">
+            
+            <i class="fa-solid fa-location-dot text-gray-500"></i>
+            
+            <span>Sydney, Australia</span>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+      
+      <!-- Links -->
+      
+      <div class="grid grid-cols-2 gap-10 md:col-span-2">
+        
+        <div>
+          
+          <h3 class="font-black text-xl mb-6">
+            
+            MARKETS
+            
+          </h3>
+          
+          <ul class="space-y-4 text-gray-500">
+            
+            <li><a href="#">Forex Trading</a></li>
+            
+            <li><a href="#">Cryptocurrencies</a></li>
+            
+            <li><a href="#">Stocks & ETFs</a></li>
+            
+            <li><a href="#">CFD Trading</a></li>
+            
+            <li><a href="#">Commodities</a></li>
+            
+          </ul>
+          
+        </div>
+        
+        <div>
+          
+          <h3 class="font-black text-xl mb-6">
+            
+            COMPANY
+            
+          </h3>
+          
+          <ul class="space-y-4 text-gray-500">
+            
+            <li><a href="#">About Us</a></li>
+            
+            <li><a href="#">Partners</a></li>
+            
+            <li><a href="#">Promotions</a></li>
+            
+            <li><a href="#">Security</a></li>
+            
+            <li><a href="#">Contact Us</a></li>
+            
+          </ul>
+          
+        </div>
+        
+        <div>
+          
+          <h3 class="font-black text-xl mb-6">
+            
+            RESOURCES
+            
+          </h3>
+          
+          <ul class="space-y-4 text-gray-500">
+            
+            <li><a href="#">FAQ</a></li>
+            
+            <li><a href="#">Help Center</a></li>
+            
+            <li><a href="#">Account Types</a></li>
+            
+            <li><a href="#">Trading Academy</a></li>
+            
+            <li><a href="#">Market News</a></li>
+            
+          </ul>
+          
+        </div>
+        
+        <div>
+          
+          <h3 class="font-black text-xl mb-6">
+            
+            LEGAL
+            
+          </h3>
+          
+          <ul class="space-y-4 text-gray-500">
+            
+            <li><a href="#">Terms & Conditions</a></li>
+            
+            <li><a href="#">Privacy Policy</a></li>
+            
+            <li><a href="#">Risk Disclosure</a></li>
+            
+            <li><a href="#">AML Policy</a></li>
+            
+            <li><a href="#">Cookie Policy</a></li>
+            
+          </ul>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <!-- Awards -->
+    
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      
+      <div class="bg-gradient-to-r from-yellow-50 to-white rounded-3xl border shadow p-8 flex items-center gap-6">
+        
+        <div class="w-20 h-20 rounded-full bg-yellow-100 flex items-center justify-center">
+          
+          <i class="fa-solid fa-trophy text-yellow-500 text-4xl"></i>
+          
+        </div>
+        
+        <div>
+          
+          <h3 class="text-2xl font-black">
+            
+            Best Value Broker
+            
+          </h3>
+          
+          <p class="text-gray-500">
+            
+            International Trading Excellence Award
+            
+          </p>
+          
+        </div>
+        
+      </div>
+      
+      <div class="bg-white rounded-3xl border shadow p-8 flex items-center gap-6">
+        
+        <div class="w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center">
+          
+          <i class="fa-solid fa-shield-halved text-blue-600 text-4xl"></i>
+          
+        </div>
+        
+        <div>
+          
+          <h3 class="text-2xl font-black">
+            
+            IFSC Regulated
+            
+          </h3>
+          
+          <p class="text-gray-500">
+            
+            Belize IFSC License • Reg. No. 001992/478
+            
+          </p>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <hr class="mb-10">
+    
+    <div class="text-center text-gray-500 text-lg">
+      
+      © 2026 CapitalSync FX Limited. All Rights Reserved.
+      
+    </div>
+    
+  </div>
+  
+  <!-- Risk Warning -->
+  
+  <div class="bg-gray-100 py-20">
+    
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <h2 class="text-2xl font-black mb-8">
+        
+        RISK WARNING
+        
+      </h2>
+      
+      <p class="text-gray-600 leading-10 text-lg">
+        
+        Trading leveraged products such as Forex, CFDs, Commodities and Cryptocurrencies involves significant risk and may not be suitable for every investor. You should carefully consider your investment objectives, financial situation and level of experience before trading. Past performance is not indicative of future results. Never invest money you cannot afford to lose.
+        
+      </p>
+      
+      <div class="mt-12 space-y-4 text-gray-600 leading-9">
+        
+        <p>
+          
+          CapitalSync FX Limited • IFSC Registration No. 001992/478
+          
+        </p>
+        
+        <p>
+          
+          Head Office: Suite 15, 148 Des Voeux Road Central, Hong Kong
+          
+        </p>
+        
+        <p>
+          
+          Operations Office: Unit 1 Ground Floor, 74–76 Liverpool Street, Sydney NSW 2000, Australia
+          
+        </p>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</section>
+<!-- ================= CTA SECTION ================= -->
+
+<section class="py-24 relative overflow-hidden">
+
+<div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-sky-500 to-emerald-400"></div>
+
+<div class="absolute -top-32 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+
+<div class="absolute -bottom-32 -right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+
+<div class="relative max-w-7xl mx-auto px-6">
+
+<div class="rounded-[40px] p-12 md:p-20 text-center text-white">
+
+<span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-xl px-6 py-3 rounded-full font-semibold">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Start Trading Today
+
+</span>
+
+<h2 class="mt-8 text-5xl md:text-7xl font-black leading-tight">
+
+Trade The World's
+
+<br>
+
+Financial Markets
+
+</h2>
+
+<p class="mt-8 text-xl text-white/90 max-w-3xl mx-auto leading-9">
+
+Open your account in minutes and access Forex, Stocks, Commodities, Crypto and Indices with institutional-grade execution.
+
+</p>
+
+<div class="mt-12 flex flex-col md:flex-row justify-center gap-6">
+
+<a href="#"
+
+class="bg-white text-blue-600 font-bold px-10 py-5 rounded-2xl text-xl hover:scale-105 transition">
+
+Open Live Account
+
+</a>
+
+<a href="#"
+
+class="border-2 border-white text-white font-bold px-10 py-5 rounded-2xl text-xl hover:bg-white hover:text-blue-600 transition">
+
+Try Demo Account
+
+</a>
+
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
+
+<div>
+
+<h3 class="text-5xl font-black">
+
+250K+
+
+</h3>
+
+<p class="mt-2 text-white/80">
+
+Registered Traders
+
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-5xl font-black">
+
+180+
+
+</h3>
+
+<p class="mt-2 text-white/80">
+
+Countries
+
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-5xl font-black">
+
+24/7
+
+</h3>
+
+<p class="mt-2 text-white/80">
+
+Support
+
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-5xl font-black">
+
+99.9%
+
+</h3>
+
+<p class="mt-2 text-white/80">
+
+Uptime
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= TRUST BAR ================= -->
+
+<section class="bg-slate-900 border-t border-slate-800 border-b border-slate-800">
+  
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      
+      <div>
+        
+        <div class="w-16 h-16 mx-auto rounded-full bg-slate-800 flex items-center justify-center text-blue-400 text-3xl mb-4">
+          
+          <i class="fa-solid fa-lock"></i>
+          
+        </div>
+        
+        <h3 class="text-white text-xl font-bold">
+          
+          Bank-Level Security
+          
+        </h3>
+        
+        <p class="text-gray-400 mt-2">
+          
+          256-bit SSL encryption keeps your funds and data protected.
+          
+        </p>
+        
+      </div>
+      
+      <div>
+        
+        <div class="w-16 h-16 mx-auto rounded-full bg-slate-800 flex items-center justify-center text-green-400 text-3xl mb-4">
+          
+          <i class="fa-solid fa-shield-halved"></i>
+          
+        </div>
+        
+        <h3 class="text-white text-xl font-bold">
+          
+          Regulated Broker
+          
+        </h3>
+        
+        <p class="text-gray-400 mt-2">
+          
+          Operating under international financial compliance standards.
+          
+        </p>
+        
+      </div>
+      
+      <div>
+        
+        <div class="w-16 h-16 mx-auto rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 text-3xl mb-4">
+          
+          <i class="fa-solid fa-headset"></i>
+          
+        </div>
+        
+        <h3 class="text-white text-xl font-bold">
+          
+          24/7 Support
+          
+        </h3>
+        
+        <p class="text-gray-400 mt-2">
+          
+          Professional multilingual support whenever you need help.
+          
+        </p>
+        
+      </div>
+      
+      <div>
+        
+        <div class="w-16 h-16 mx-auto rounded-full bg-slate-800 flex items-center justify-center text-yellow-400 text-3xl mb-4">
+          
+          <i class="fa-solid fa-award"></i>
+          
+        </div>
+        
+        <h3 class="text-white text-xl font-bold">
+          
+          Award Winning
+          
+        </h3>
+        
+        <p class="text-gray-400 mt-2">
+          
+          Trusted by thousands of traders across 180+ countries.
+          
+        </p>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-slate-950 text-gray-300">
+
+<div class="max-w-7xl mx-auto px-6 py-20">
+
+<div class="grid md:grid-cols-4 gap-12">
+
+<div>
+
+<h2 class="text-3xl font-black text-white">
+
+CapitalSync
+
+<span class="text-blue-400">
+
+FX
+
+</span>
+
+</h2>
+
+<p class="mt-6 leading-8">
+
+Professional multi-asset trading platform providing secure, transparent and institutional-grade market access.
+
+</p>
+
+<div class="flex gap-4 mt-8">
+
+<a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition">
+
+<i class="fab fa-facebook-f"></i>
+
+</a>
+
+<a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-500 transition">
+
+<i class="fab fa-twitter"></i>
+
+</a>
+
+<a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 transition">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+<a href="#" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-700 transition">
+
+<i class="fab fa-linkedin-in"></i>
+
+</a>
+
+</div>
+
+</div>
+
+<div>
+
+<h3 class="text-white text-2xl font-bold mb-6">
+
+Markets
+
+</h3>
+
+<ul class="space-y-4">
+
+<li><a href="#" class="hover:text-white">Forex</a></li>
+
+<li><a href="#" class="hover:text-white">Stocks</a></li>
+
+<li><a href="#" class="hover:text-white">Crypto</a></li>
+
+<li><a href="#" class="hover:text-white">Indices</a></li>
+
+<li><a href="#" class="hover:text-white">Commodities</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3 class="text-white text-2xl font-bold mb-6">
+
+Company
+
+</h3>
+
+<ul class="space-y-4">
+
+<li><a href="#" class="hover:text-white">About Us</a></li>
+
+<li><a href="#" class="hover:text-white">Platforms</a></li>
+
+<li><a href="#" class="hover:text-white">Pricing</a></li>
+
+<li><a href="#" class="hover:text-white">Support</a></li>
+
+<li><a href="#" class="hover:text-white">Contact</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3 class="text-white text-2xl font-bold mb-6">
+
+Newsletter
+
+</h3>
+
+<p class="mb-6">
+
+Receive market insights and trading updates weekly.
+
+</p>
+
+<form class="space-y-4">
+
+<input
+
+type="email"
+
+placeholder="Your Email"
+
+class="w-full px-3 py-4 rounded-xl bg-slate-900 border border-slate-700 focus:outline-none focus:border-blue-500">
+
+<button
+
+class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-400 font-bold text-white hover:opacity-90 transition">
+
+Subscribe
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<hr class="border-slate-800 my-12">
+
+<div class="flex flex-col md:flex-row justify-between items-center gap-5">
+
+<p>
+
+© 2026 CapitalSync FX. All Rights Reserved.
+
+</p>
+
+<div class="flex gap-8">
+
+<a href="#" class="hover:text-white">
+
+Privacy Policy
+
+</a>
+
+<a href="#" class="hover:text-white">
+
+Terms & Conditions
+
+</a>
+
+<a href="#" class="hover:text-white">
+
+Risk Disclosure
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+const menu = document.getElementById("menuBtn");
+const mobile = document.getElementById("mobileMenu");
+const close = document.getElementById("closeMenu");
+
+menu.addEventListener("click", function() {
+  mobile.style.right = "0";
+});
+
+close.addEventListener("click", function() {
+  mobile.style.right = "-100%";
+});
+
+</script>
+
+</body>
+</html>
