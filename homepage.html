@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,7 +8,7 @@
 
 <title>CapitalSync FX | Dashboard</title>
 
-<!-- Tailwind CSS -->
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- Google Font -->
@@ -31,7 +32,7 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#f5fbff;
+background:#f6fbff;
 overflow-x:hidden;
 color:#111827;
 }
@@ -53,10 +54,10 @@ z-index:-3;
 
 .bg2{
 position:fixed;
-right:-160px;
 top:150px;
-width:380px;
-height:380px;
+right:-180px;
+width:400px;
+height:400px;
 border-radius:50%;
 background:#06b6d4;
 filter:blur(120px);
@@ -66,7 +67,7 @@ z-index:-3;
 
 .bg3{
 position:fixed;
-bottom:-180px;
+bottom:-170px;
 left:35%;
 width:420px;
 height:420px;
@@ -80,206 +81,338 @@ z-index:-3;
 /* Navbar */
 
 .navbar{
+
 height:75px;
-background:rgba(255,255,255,.85);
-backdrop-filter:blur(20px);
-box-shadow:0 10px 30px rgba(0,0,0,.05);
+
 position:sticky;
+
 top:0;
-z-index:999;
+
+background:rgba(255,255,255,.88);
+
+backdrop-filter:blur(20px);
+
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 18px;
+
+z-index:1000;
+
+}
+
+/* Logo */
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.logo img{
+
+width:48px;
+
+height:48px;
+
+border-radius:14px;
+
+object-fit:cover;
+
+border:2px solid #2563eb;
+
+}
+
+.logo h2{
+
+font-size:24px;
+
+font-weight:900;
+
+white-space:nowrap;
+
+}
+
+.logo span{
+
+color:#2563eb;
+
+}
+
+/* User */
+
+.user-box{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+min-width:0;
+
+}
+
+.user-info{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:flex-end;
+
+min-width:0;
+
+}
+
+.user-info p{
+
+font-size:11px;
+
+color:#6b7280;
+
+}
+
+#topEmail{
+
+font-size:13px;
+
+font-weight:700;
+
+color:#2563eb;
+
+max-width:140px;
+
+overflow:hidden;
+
+white-space:nowrap;
+
+text-overflow:ellipsis;
+
+}
+
+#userPhoto{
+
+width:48px;
+
+height:48px;
+
+border-radius:50%;
+
+border:2px solid #2563eb;
+
+object-fit:cover;
+
+}
+
+/* Menu Button */
+
+#menuBtn{
+
+width:48px;
+
+height:48px;
+
+border:none;
+
+border-radius:14px;
+
+background:linear-gradient(135deg,#2563eb,#06b6d4,#10b981);
+
+color:white;
+
+cursor:pointer;
+
+font-size:20px;
+
+box-shadow:0 15px 30px rgba(37,99,235,.25);
+
+}
+
+/* Overlay */
+
+#overlay{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.45);
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.3s;
+
+z-index:998;
+
+}
+
+#overlay.show{
+
+opacity:1;
+
+visibility:visible;
+
 }
 
 /* Sidebar */
 
 .sidebar{
+
 position:fixed;
-left:-300px;
+
+left:-310px;
+
 top:0;
-width:280px;
+
+width:290px;
+
 height:100%;
+
 background:white;
-box-shadow:0 25px 50px rgba(0,0,0,.12);
-transition:.4s;
-z-index:1000;
+
 overflow-y:auto;
+
+transition:.35s;
+
+box-shadow:0 30px 60px rgba(0,0,0,.15);
+
+z-index:999;
+
 }
 
 .sidebar.active{
+
 left:0;
+
 }
 
-.sidebar::-webkit-scrollbar{
-width:5px;
+.sidebar-header{
+
+padding:25px;
+
+text-align:center;
+
 }
 
-.sidebar::-webkit-scrollbar-thumb{
-background:#dbeafe;
-border-radius:20px;
+.sidebar-header img{
+
+width:95px;
+
+height:95px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:4px solid #2563eb;
+
+margin:auto;
+
+}
+
+.sidebar-header h2{
+
+margin-top:15px;
+
+font-size:23px;
+
+font-weight:900;
+
+}
+
+.sidebar-header p{
+
+margin-top:5px;
+
+color:#6b7280;
+
+font-size:14px;
+
+}
+
+.close-btn{
+
+position:absolute;
+
+top:18px;
+
+right:18px;
+
+font-size:30px;
+
+cursor:pointer;
+
 }
 
 .menu-item{
+
 display:flex;
+
 align-items:center;
+
 gap:18px;
+
 padding:18px 25px;
-font-weight:600;
+
+font-weight:700;
+
 color:#374151;
-border-radius:18px;
+
 transition:.35s;
+
+text-decoration:none;
+
 }
 
 .menu-item:hover{
+
 background:linear-gradient(90deg,#2563eb,#06b6d4,#10b981);
+
 color:white;
-transform:translateX(6px);
+
+padding-left:35px;
+
 }
 
 .menu-item i{
+
+width:22px;
+
 font-size:20px;
-width:25px;
+
 text-align:center;
-}
-
-/* Cards */
-
-.card{
-background:white;
-border-radius:28px;
-box-shadow:0 18px 45px rgba(37,99,235,.10);
-padding:25px;
-transition:.35s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.gradient-card{
-background:linear-gradient(135deg,#2563eb,#0ea5e9,#10b981);
-color:white;
-border-radius:30px;
-padding:30px;
-box-shadow:0 20px 45px rgba(37,99,235,.25);
-}
-
-.glass{
-background:rgba(255,255,255,.65);
-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.7);
-border-radius:24px;
-}
-
-/* Buttons */
-
-.action-btn{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-gap:12px;
-padding:20px;
-background:white;
-border-radius:24px;
-box-shadow:0 12px 30px rgba(37,99,235,.08);
-transition:.35s;
-}
-
-.action-btn:hover{
-transform:translateY(-6px);
-background:linear-gradient(135deg,#2563eb,#06b6d4,#10b981);
-color:white;
-}
-
-.action-btn i{
-font-size:30px;
-}
-
-/* Floating */
-
-.float{
-animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-
-0%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-8px);
-}
-
-100%{
-transform:translateY(0);
-}
 
 }
 
-/* Fade */
+@media(max-width:640px){
 
-.fade{
-animation:fade .7s ease;
-}
+.logo h2{
 
-@keyframes fade{
-
-from{
-opacity:0;
-transform:translateY(20px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
+font-size:18px;
 
 }
 
-/* Bottom Navigation */
+#topEmail{
 
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:white;
-box-shadow:0 -10px 30px rgba(0,0,0,.08);
-display:flex;
-justify-content:space-around;
-padding:12px 0;
-z-index:999;
-}
+max-width:95px;
 
-.bottom-nav a{
-display:flex;
-flex-direction:column;
-align-items:center;
-font-size:13px;
-font-weight:600;
-color:#6b7280;
-text-decoration:none;
-}
-
-.bottom-nav a.active{
-color:#2563eb;
-}
-
-.bottom-nav i{
-font-size:22px;
-margin-bottom:4px;
-}
-
-@media(min-width:1024px){
-
-.bottom-nav{
-display:none;
 }
 
 }
 
 </style>
-
 
 </head>
 
@@ -289,196 +422,186 @@ display:none;
 <div class="bg2"></div>
 <div class="bg3"></div>
 
+<!-- Overlay -->
+
+<div id="overlay"></div>
+
+<!-- Sidebar -->
+
 <div id="sidebar" class="sidebar">
 
-<!-- Sidebar content starts in Part 1.2 -->
+<!-- Part B will continue here -->
 
 </div>
 
-<div class="min-h-screen pb-24">
+<!-- Main Wrapper -->
 
-<!-- Navbar starts in Part 1.2 -->
-<!-- ================= NAVBAR ================= -->
+<div class="min-h-screen">
 
-<header class="navbar flex items-center justify-between px-5">
+<!-- Navbar -->
 
-    <!-- Menu Button -->
+<header class="navbar">
 
-    <button id="menuBtn"
-    class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 text-white shadow-lg">
+<button id="menuBtn">
 
-        <i class="fas fa-bars text-xl"></i>
+<i class="fas fa-bars"></i>
 
-    </button>
+</button>
 
-    <!-- Logo -->
+<div class="logo">
 
-    <div class="flex items-center gap-3">
+<img src="FB_IMG_17580202436038222.jpg">
 
-        <img src="FB_IMG_17580202436038222.jpg"
-        class="w-12 h-12 rounded-xl border-2 border-blue-500 object-cover">
+<h2>
 
-        <div>
+CapitalSync <span>FX</span>
 
-            <h2 class="text-2xl font-black">
-
-                CapitalSync
-
-                <span class="text-blue-600">FX</span>
-
-            </h2>
-
-        </div>
-
-    </div>
-
-  <div class="flex items-center gap-3">
-
-    <div class="text-right">
-
-        <p class="text-xs text-gray-500">
-            Signed in as
-        </p>
-
-        <h3 id="topEmail"
-        class="text-sm font-bold text-blue-700">
-            Loading...
-        </h3>
-
-    </div>
-
-    <img id="userPhoto"
-    src="https://ui-avatars.com/api/?name=User"
-    class="w-12 h-12 rounded-full border-2 border-blue-500 object-cover">
+</h2>
 
 </div>
+
+<div class="user-box">
+
+<div class="user-info">
+
+<p>Signed in as</p>
+
+<div id="topEmail">
+
+Loading...
+
+</div>
+
+</div>
+
+<img id="userPhoto"
+
+src="https://ui-avatars.com/api/?name=User">
+
+</div>
+
 </header>
 
-<!-- ================= SIDEBAR ================= -->
+<!-- Part B starts immediately after this -->
+<!-- ================= SIDEBAR CONTENT ================= -->
 
-<div id="sidebar" class="sidebar">
+<div class="sidebar-header">
 
-    <div class="p-6">
+    <span id="closeMenu" class="close-btn">
+        <i class="fas fa-times"></i>
+    </span>
 
-        <div class="flex items-center justify-between">
+    <img id="sidePhoto"
+    src="https://ui-avatars.com/api/?name=User">
 
-            <img id="sidePhoto"
-            src="https://ui-avatars.com/api/?name=User"
-            class="w-20 h-20 rounded-full border-4 border-blue-500 object-cover">
+    <h2 id="sideName">Loading...</h2>
 
-            <button id="closeMenu" class="text-3xl">
-                <i class="fas fa-times"></i>
-            </button>
+    <p>
+        Verified Trader
+        <i class="fas fa-circle-check text-blue-600"></i>
+    </p>
 
-        </div>
+</div>
 
-        <h2 id="sideName"
-        class="text-2xl font-black mt-5">
-            Loading...
-        </h2>
+<hr>
 
-        <p class="text-gray-500">
-            Verified Trader
-            <i class="fas fa-circle-check text-blue-600"></i>
-        </p>
+<nav class="py-4">
 
-    </div>
+<a href="#" class="menu-item">
+<i class="fas fa-house"></i>
+Dashboard
+</a>
 
-    <hr>
+<a href="#" class="menu-item">
+<i class="fas fa-wallet"></i>
+Assets
+</a>
 
-    <nav class="px-4 py-4 space-y-2">
+<a href="#" class="menu-item">
+<i class="fas fa-chart-line"></i>
+Trading
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-home"></i>
-            Dashboard
-        </a>
+<a href="#" class="menu-item">
+<i class="fas fa-chart-pie"></i>
+Markets
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-wallet"></i>
-            Assets
-        </a>
+<a href="#" class="menu-item">
+<i class="fas fa-repeat"></i>
+Transactions
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-chart-line"></i>
-            Signals
-        </a>
+<a href="#" class="menu-item">
+<i class="fas fa-download"></i>
+Deposit
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-chart-pie"></i>
-            Markets
-        </a>
+<a href="#" class="menu-item">
+<i class="fas fa-upload"></i>
+Withdrawal
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-arrow-right-arrow-left"></i>
-            Trades
-        </a>
+<a href="#" class="menu-item">
+<i class="fas fa-copy"></i>
+Copy Trading
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-money-bill-wave"></i>
-            Deposit
-        </a>
+<a href="#" class="menu-item">
+<i class="fas fa-layer-group"></i>
+Subscriptions
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-credit-card"></i>
-            Withdrawal
-        </a>
+<a href="#" class="menu-item">
+<i class="fas fa-user"></i>
+Profile
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-copy"></i>
-            Copy Trading
-        </a>
+<a href="#" class="menu-item">
+<i class="fas fa-gear"></i>
+Settings
+</a>
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-layer-group"></i>
-            Subscriptions
-        </a>
+<a href="javascript:void(0)"
+id="logoutBtn"
+class="menu-item text-red-600">
 
-        <a href="#" class="menu-item">
-            <i class="fas fa-gear"></i>
-            Settings
-        </a>
+<i class="fas fa-right-from-bracket"></i>
 
-        <a href="javascript:void(0)"
-        id="logoutBtn"
-        class="menu-item text-red-600">
-            <i class="fas fa-right-from-bracket"></i>
-            Logout
-        </a>
+Logout
 
-    </nav>
+</a>
+
+</nav>
 
 </div>
 
 <!-- ================= MAIN CONTENT ================= -->
 
-<div class="min-h-screen pb-24">
-<!-- ================= PAGE CONTENT ================= -->
-
-<div class="max-w-7xl mx-auto px-5 py-8 fade">
+<main class="max-w-7xl mx-auto px-5 py-8">
 
 <!-- Welcome Card -->
 
-<div class="gradient-card float">
+<div class="gradient-card">
 
-<div class="flex items-center justify-between">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
 
 <div>
 
 <p class="text-lg opacity-90">
 
-Good Morning 👋
+Welcome Back 👋
 
 </p>
 
 <h1 class="text-4xl font-black mt-2">
 
-Welcome,
+CapitalSync FX
 
 </h1>
 
 <h2 id="welcomeName"
-
-class="text-3xl font-bold mt-3">
+class="text-2xl font-bold mt-4 break-all">
 
 Loading...
 
@@ -486,7 +609,7 @@ Loading...
 
 <p class="mt-4 text-white/90">
 
-Ready to trade the world's financial markets?
+Trade Forex, Crypto, Stocks and Commodities from one premium dashboard.
 
 </p>
 
@@ -496,23 +619,23 @@ Ready to trade the world's financial markets?
 
 src="https://ui-avatars.com/api/?name=User"
 
-class="w-24 h-24 rounded-full border-4 border-white shadow-xl object-cover">
+class="w-28 h-28 rounded-full border-4 border-white object-cover shadow-2xl">
 
 </div>
 
 </div>
 
-<!-- Balance Card -->
+<!-- Balance -->
 
 <div class="card mt-8">
 
-<div class="flex justify-between items-center">
+<div class="flex items-center justify-between">
 
 <div>
 
 <p class="text-gray-500">
 
-Account Balance
+Portfolio Balance
 
 </p>
 
@@ -530,9 +653,9 @@ $
 
 </div>
 
-<div class="text-right">
+<div>
 
-<span class="bg-green-100 text-green-700 px-5 py-2 rounded-full font-bold">
+<span class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold">
 
 LIVE
 
@@ -542,7 +665,7 @@ LIVE
 
 <button id="toggleBalance"
 
-class="text-blue-600 font-semibold">
+class="font-bold text-blue-600">
 
 <i class="fas fa-eye"></i>
 
@@ -558,17 +681,13 @@ Hide
 
 <!-- Quick Actions -->
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-5 mt-8">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
 
 <div class="action-btn">
 
 <i class="fas fa-download"></i>
 
-<span>
-
-Deposit
-
-</span>
+<span>Deposit</span>
 
 </div>
 
@@ -576,11 +695,7 @@ Deposit
 
 <i class="fas fa-upload"></i>
 
-<span>
-
-Withdraw
-
-</span>
+<span>Withdraw</span>
 
 </div>
 
@@ -588,11 +703,7 @@ Withdraw
 
 <i class="fas fa-chart-line"></i>
 
-<span>
-
-Trade
-
-</span>
+<span>Trade</span>
 
 </div>
 
@@ -600,18 +711,14 @@ Trade
 
 <i class="fas fa-signal"></i>
 
-<span>
-
-Signals
-
-</span>
+<span>Signals</span>
 
 </div>
 
 </div>
 
-<!-- Part 1.2 Ends Here -->
-<!-- ================= LIVE MARKET WIDGET ================= -->
+<!-- Part C starts immediately after this -->
+<!-- ================= LIVE MARKET ================= -->
 
 <section class="mt-10">
 
@@ -622,11 +729,15 @@ Signals
 <div>
 
 <h2 class="text-3xl font-black">
+
 Live Markets
+
 </h2>
 
 <p class="text-gray-500">
-Real-time prices powered by TradingView
+
+Real-time market prices powered by TradingView
+
 </p>
 
 </div>
@@ -635,23 +746,24 @@ Real-time prices powered by TradingView
 
 <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
 
-<span class="font-semibold text-green-600">
+<span class="font-bold text-green-600">
+
 LIVE
+
 </span>
 
 </div>
 
 </div>
 
-<div class="rounded-3xl overflow-hidden shadow-lg">
-
-<!-- TradingView Widget BEGIN -->
+<div class="rounded-3xl overflow-hidden">
 
 <div class="tradingview-widget-container">
 
 <div class="tradingview-widget-container__widget"></div>
 
-<script type="text/javascript"
+<script
+type="text/javascript"
 src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
 async>
 {
@@ -659,18 +771,10 @@ async>
 "dateRange":"12M",
 "showChart":true,
 "locale":"en",
-"largeChartUrl":"",
 "isTransparent":true,
 "showSymbolLogo":true,
-"showFloatingTooltip":true,
 "width":"100%",
-"height":"700",
-"plotLineColorGrowing":"#2563eb",
-"plotLineColorFalling":"#ef4444",
-"gridLineColor":"rgba(240,243,250,0)",
-"scaleFontColor":"#6B7280",
-"belowLineFillColorGrowing":"rgba(37,99,235,0.12)",
-"belowLineFillColorFalling":"rgba(239,68,68,0.12)",
+"height":"620",
 "tabs":[
 
 {
@@ -680,8 +784,8 @@ async>
 {"s":"FX:GBPUSD"},
 {"s":"FX:USDJPY"},
 {"s":"FX:AUDUSD"},
-{"s":"FX:USDCAD"},
-{"s":"FX:USDCHF"}
+{"s":"FX:USDCHF"},
+{"s":"FX:USDCAD"}
 ]
 },
 
@@ -691,9 +795,8 @@ async>
 {"s":"BINANCE:BTCUSDT"},
 {"s":"BINANCE:ETHUSDT"},
 {"s":"BINANCE:SOLUSDT"},
-{"s":"BINANCE:XRPUSDT"},
 {"s":"BINANCE:BNBUSDT"},
-{"s":"BINANCE:DOGEUSDT"}
+{"s":"BINANCE:XRPUSDT"}
 ]
 },
 
@@ -701,42 +804,18 @@ async>
 "title":"Stocks",
 "symbols":[
 {"s":"NASDAQ:AAPL"},
-{"s":"NASDAQ:MSFT"},
 {"s":"NASDAQ:NVDA"},
-{"s":"NASDAQ:TSLA"},
+{"s":"NASDAQ:MSFT"},
 {"s":"NASDAQ:AMZN"},
 {"s":"NASDAQ:META"}
-]
-},
-
-{
-"title":"Commodities",
-"symbols":[
-{"s":"TVC:GOLD"},
-{"s":"TVC:SILVER"},
-{"s":"NYMEX:CL1!"},
-{"s":"NYMEX:NG1!"}
-]
-},
-
-{
-"title":"Indices",
-"symbols":[
-{"s":"FOREXCOM:SPXUSD"},
-{"s":"FOREXCOM:NSXUSD"},
-{"s":"FOREXCOM:DJI"},
-{"s":"FOREXCOM:UKXGBP"}
 ]
 }
 
 ]
-
 }
 </script>
 
 </div>
-
-<!-- TradingView Widget END -->
 
 </div>
 
@@ -744,77 +823,388 @@ async>
 
 </section>
 
-<!-- Firebase -->
+<!-- ================= STATISTICS ================= -->
+
+<section class="grid md:grid-cols-4 gap-6 mt-10">
+
+<div class="card">
+
+<p class="text-gray-500">
+
+Today's Profit
+
+</p>
+
+<h2 class="text-3xl font-black text-green-600">
+
++$2,430
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<p class="text-gray-500">
+
+Open Trades
+
+</p>
+
+<h2 class="text-3xl font-black">
+
+18
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<p class="text-gray-500">
+
+Win Rate
+
+</p>
+
+<h2 class="text-3xl font-black text-blue-600">
+
+92%
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<p class="text-gray-500">
+
+Trading Level
+
+</p>
+
+<h2 class="text-3xl font-black text-emerald-600">
+
+PRO
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- ================= RECENT TRANSACTIONS ================= -->
+
+<section class="mt-10">
+
+<div class="card">
+
+<div class="flex justify-between items-center mb-6">
+
+<h2 class="text-3xl font-black">
+
+Recent Transactions
+
+</h2>
+
+<a href="#"
+class="text-blue-600 font-bold">
+
+View All
+
+</a>
+
+</div>
+
+<div class="space-y-5">
+
+<div class="flex justify-between items-center">
+
+<div>
+
+<h3 class="font-bold">
+
+Bitcoin Deposit
+
+</h3>
+
+<p class="text-gray-500">
+
+Today • 09:14 AM
+
+</p>
+
+</div>
+
+<span class="text-green-600 font-black">
+
++$5,000
+
+</span>
+
+</div>
+
+<hr>
+
+<div class="flex justify-between items-center">
+
+<div>
+
+<h3 class="font-bold">
+
+EUR/USD Trade
+
+</h3>
+
+<p class="text-gray-500">
+
+Yesterday
+
+</p>
+
+</div>
+
+<span class="text-green-600 font-black">
+
++$820
+
+</span>
+
+</div>
+
+<hr>
+
+<div class="flex justify-between items-center">
+
+<div>
+
+<h3 class="font-bold">
+
+Withdrawal
+
+</h3>
+
+<p class="text-gray-500">
+
+2 Days Ago
+
+</p>
+
+</div>
+
+<span class="text-red-600 font-black">
+
+-$1,500
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= BOTTOM NAVIGATION ================= -->
+
+<nav class="bottom-nav">
+
+<a href="#" class="active">
+
+<i class="fas fa-home"></i>
+
+Home
+
+</a>
+
+<a href="#">
+
+<i class="fas fa-chart-line"></i>
+
+Trade
+
+</a>
+
+<a href="#">
+
+<i class="fas fa-wallet"></i>
+
+Wallet
+
+</a>
+
+<a href="#">
+
+<i class="fas fa-user"></i>
+
+Profile
+
+</a>
+
+</nav>
+
+</main>
+
+</div>
+
+<!-- Part D starts after this -->
+<!-- ================= FIREBASE ================= -->
+
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-    getAuth,
-    onAuthStateChanged,
-    signOut
+getAuth,
+onAuthStateChanged,
+signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB1k9_w1-SwQ_68sQ4yM9NOF_clU9_PKg0",
-    authDomain: "green-54f87.firebaseapp.com",
-    databaseURL: "https://green-54f87-default-rtdb.firebaseio.com",
-    projectId: "green-54f87",
-    storageBucket: "green-54f87.appspot.com",
-    messagingSenderId: "13622576743",
-    appId: "1:13622576743:web:93615f9e92d01a3d7d36c2"
+
+apiKey:"AIzaSyB1k9_w1-SwQ_68sQ4yM9NOF_clU9_PKg0",
+
+authDomain:"green-54f87.firebaseapp.com",
+
+databaseURL:"https://green-54f87-default-rtdb.firebaseio.com",
+
+projectId:"green-54f87",
+
+storageBucket:"green-54f87.appspot.com",
+
+messagingSenderId:"13622576743",
+
+appId:"1:13622576743:web:93615f9e92d01a3d7d36c2"
+
 };
 
 const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
 
-// Wait for Firebase to determine login state
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth,(user)=>{
 
-    if (user) {
+if(user){
 
-        // Display user's email
-        document.getElementById("topEmail").textContent = user.email;
-        document.getElementById("welcomeName").textContent = user.email;
-        document.getElementById("sideName").textContent = user.email;
+const name=user.displayName||user.email;
+const photo=user.photoURL||"https://ui-avatars.com/api/?name="+encodeURIComponent(name);
 
-        // Display profile photo if available
-        if (user.photoURL) {
-            document.getElementById("userPhoto").src = user.photoURL;
-            document.getElementById("welcomePhoto").src = user.photoURL;
-            document.getElementById("sidePhoto").src = user.photoURL;
-        }
+document.getElementById("topEmail").textContent=user.email;
+document.getElementById("welcomeName").textContent=name;
+document.getElementById("sideName").textContent=name;
 
-    } else {
+document.getElementById("userPhoto").src=photo;
+document.getElementById("welcomePhoto").src=photo;
+document.getElementById("sidePhoto").src=photo;
 
-        // Redirect only if not signed in
-        window.location.replace("login.html");
+}else{
 
-    }
+window.location.replace("login.html");
+
+}
 
 });
 
-// Logout
-window.addEventListener("DOMContentLoaded", () => {
+document.getElementById("logoutBtn").onclick=()=>{
 
-    const logoutBtn = document.getElementById("logoutBtn");
+signOut(auth)
+.then(()=>{
 
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
+window.location.replace("login.html");
 
-            signOut(auth)
-                .then(() => {
-                    window.location.replace("login.html");
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert("Logout failed.");
-                });
+})
+.catch(()=>{
 
-        });
-    }
+alert("Unable to logout.");
 
 });
+
+};
+
 </script>
+
+<!-- ================= DASHBOARD ================= -->
+
+<script>
+
+// Sidebar
+
+const sidebar=document.getElementById("sidebar");
+const menuBtn=document.getElementById("menuBtn");
+const closeMenu=document.getElementById("closeMenu");
+const overlay=document.getElementById("overlay");
+
+menuBtn.onclick=()=>{
+
+sidebar.classList.add("active");
+overlay.classList.add("show");
+
+};
+
+closeMenu.onclick=()=>{
+
+sidebar.classList.remove("active");
+overlay.classList.remove("show");
+
+};
+
+overlay.onclick=()=>{
+
+sidebar.classList.remove("active");
+overlay.classList.remove("show");
+
+};
+
+// Balance Toggle
+
+const balance=document.getElementById("balance");
+const toggle=document.getElementById("toggleBalance");
+
+let hidden=false;
+
+toggle.onclick=()=>{
+
+hidden=!hidden;
+
+if(hidden){
+
+balance.innerHTML="******";
+toggle.innerHTML='<i class="fas fa-eye-slash"></i> Show';
+
+}else{
+
+balance.innerHTML="0.00";
+toggle.innerHTML='<i class="fas fa-eye"></i> Hide';
+
+}
+
+};
+
+// Greeting
+
+const hour=new Date().getHours();
+
+let greeting="Welcome";
+
+if(hour<12){
+
+greeting="Good Morning 👋";
+
+}else if(hour<17){
+
+greeting="Good Afternoon ☀️";
+
+}else{
+
+greeting="Good Evening 🌙";
+
+}
+
+document.querySelector(".gradient-card p").textContent=greeting;
+
+</script>
+
 </body>
+
 </html>
