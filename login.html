@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>CapitalSync FX | Login</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#f5fbff;
+overflow:hidden;
+}
+
+/* Background */
+
+.bg-circle{
+position:absolute;
+width:420px;
+height:420px;
+border-radius:50%;
+filter:blur(90px);
+opacity:.35;
+z-index:-1;
+}
+
+.bg1{
+background:#3b82f6;
+top:-150px;
+left:-150px;
+}
+
+.bg2{
+background:#22d3ee;
+right:-100px;
+bottom:-120px;
+}
+
+.glass{
+background:rgba(255,255,255,.75);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.8);
+}
+
+.gradient{
+background:linear-gradient(90deg,#2563eb,#06b6d4,#10b981);
+}
+
+.gradient-text{
+background:linear-gradient(90deg,#2563eb,#10b981);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.loader{
+width:25px;
+height:25px;
+border-radius:50%;
+border:3px solid white;
+border-top-color:transparent;
+animation:spin 1s linear infinite;
+display:none;
+margin:auto;
+}
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg-circle bg1"></div>
+<div class="bg-circle bg2"></div>
+
+<div class="min-h-screen flex items-center justify-center px-5">
+
+<div class="glass rounded-[35px] shadow-2xl w-full max-w-md p-10">
+
+<div class="text-center">
+
+<img src="FB_IMG_17580202436038222.jpg"
+class="w-24 h-24 rounded-2xl border-4 border-blue-600 mx-auto">
+
+<h1 class="text-4xl font-black mt-6">
+
+CapitalSync
+
+<span class="gradient-text">
+
+FX
+
+</span>
+
+</h1>
+
+<p class="text-gray-500 mt-4">
+
+Secure access to your trading account
+
+</p>
+
+</div>
+
+<button
+id="googleBtn"
+class="gradient w-full text-white py-4 rounded-2xl mt-10 font-bold text-lg shadow-xl hover:scale-105 transition">
+
+<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+class="w-6 inline mr-3">
+
+Continue with Google
+
+</button>
+
+<div id="loader" class="loader mt-6"></div>
+
+<p class="text-center text-gray-500 mt-10 text-sm">
+
+Protected with Google Authentication
+
+</p>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+GoogleAuthProvider,
+signInWithPopup,
+onAuthStateChanged
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey:"AIzaSyB1k9_w1-SwQ_68sQ4yM9NOF_clU9_PKg0",
+
+authDomain:"green-54f87.firebaseapp.com",
+
+databaseURL:"https://green-54f87-default-rtdb.firebaseio.com",
+
+projectId:"green-54f87",
+
+storageBucket:"green-54f87.appspot.com",
+
+messagingSenderId:"13622576743",
+
+appId:"1:13622576743:web:93615f9e92d01a3d7d36c2"
+
+};
+
+const app=initializeApp(firebaseConfig);
+
+const auth=getAuth(app);
+
+const provider=new GoogleAuthProvider();
+
+const btn=document.getElementById("googleBtn");
+
+const loader=document.getElementById("loader");
+
+btn.onclick=()=>{
+
+loader.style.display="block";
+
+btn.disabled=true;
+
+signInWithPopup(auth,provider)
+
+.then(()=>{
+
+window.location="dashboard.html";
+
+})
+
+.catch((error)=>{
+
+loader.style.display="none";
+
+btn.disabled=false;
+
+alert(error.message);
+
+});
+
+};
+
+btn.onclick = async () => {
+
+    loader.style.display = "block";
+    btn.disabled = true;
+
+    try {
+
+        const result = await signInWithPopup(auth, provider);
+
+        const user = result.user;
+
+        alert("Welcome " + user.displayName + "!");
+
+        // Redirect ONLY after successful sign in
+        window.location.href = "homepage.html";
+
+    } catch (error) {
+
+        loader.style.display = "none";
+        btn.disabled = false;
+
+        alert(error.message);
+    }
+
+};
+</script>
+
+</body>
+</html>
