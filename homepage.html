@@ -657,23 +657,37 @@ Hide
 </div>
 
 <!-- Quick Actions -->
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-8">  <div class="action-btn">  <i class="fas fa-download"></i>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
 
-<span>Deposit</span>
+    <!-- Deposit -->
+    <button onclick="openDeposit()"
+        class="action-btn w-full flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-900 border border-cyan-500/20 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105 cursor-pointer">
+        <i class="fas fa-download text-2xl text-cyan-400 mb-2"></i>
+        <span class="font-semibold text-white">Deposit</span>
+    </button>
 
-</div>  <div class="action-btn">  <i class="fas fa-upload"></i>
+    <!-- Withdraw -->
+    <button onclick="openWithdraw()"
+        class="action-btn w-full flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-900 border border-cyan-500/20 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105 cursor-pointer">
+        <i class="fas fa-upload text-2xl text-cyan-400 mb-2"></i>
+        <span class="font-semibold text-white">Withdraw</span>
+    </button>
 
-<span>Withdraw</span>
+    <!-- Trade -->
+    <button onclick="openTrade()"
+        class="action-btn w-full flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-900 border border-cyan-500/20 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105 cursor-pointer">
+        <i class="fas fa-chart-line text-2xl text-cyan-400 mb-2"></i>
+        <span class="font-semibold text-white">Trade</span>
+    </button>
 
-</div>  <div class="action-btn">  <i class="fas fa-chart-line"></i>
+    <!-- Signals -->
+    <button onclick="openSignals()"
+        class="action-btn w-full flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-900 border border-cyan-500/20 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105 cursor-pointer">
+        <i class="fas fa-signal text-2xl text-cyan-400 mb-2"></i>
+        <span class="font-semibold text-white">Signals</span>
+    </button>
 
-<span>Trade</span>
-
-</div>  <div class="action-btn">  <i class="fas fa-signal"></i>
-
-<span>Signals</span>
-
-</div>  </div>
+</div>
 <!-- Part C starts immediately after this -->
 <!-- ================= AI TRADING ROBOTS ================= -->
 <section class="mt-14">
@@ -1688,6 +1702,23 @@ greeting="Good Evening 🌙";
 }
 
 document.querySelector(".gradient-card p").textContent=greeting;
+
+function openDeposit() {
+    // Replace with your deposit page or modal
+    window.location.href = "deposit.html";
+}
+
+function openWithdraw() {
+    window.location.href = "withdraw.html";
+}
+
+function openTrade() {
+    window.location.href = "trade.html";
+}
+
+function openSignals() {
+    window.location.href = "signals.html";
+}
 
 </script>
 
